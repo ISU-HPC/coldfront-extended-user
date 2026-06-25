@@ -2,7 +2,7 @@ from coldfront.plugins import PluginConfig
 
 from .version import __version__
 
-class ExtendedUserConfig(PluginConfig):
+class ColdFrontExtendedUserConfig(PluginConfig):
     name = "coldfront_extended_user"
     verbose_name = "Extended User"
     version = __version__
@@ -13,5 +13,5 @@ class ExtendedUserConfig(PluginConfig):
     min_version = "2.0.0"
     default_settings = {}
 
-config = ExtendedUserConfig
+config = ColdFrontExtendedUserConfig
 
