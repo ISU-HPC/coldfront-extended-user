@@ -2,8 +2,8 @@
 from django.urls import reverse
 from django.views.generic import UpdateView
 from coldfront.views import ViewTab, generic
-from extended_user.models import UserCustomFields
-from extended_user.forms import UserCustomFieldsForm
+from .models import UserCustomFields
+from .forms import UserCustomFieldsForm
 from coldfront.users.models import User
 
 from coldfront.registry import register_model_view

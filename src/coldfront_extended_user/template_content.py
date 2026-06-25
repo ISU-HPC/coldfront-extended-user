@@ -46,7 +46,7 @@ class UserCustomFieldsPanel(PluginTemplateExtension):
             return ""
         
 
-        return self.render('extended_user/custom_fields_card.html', extra_context={
+        return self.render('coldfront_extended_user/custom_fields_card.html', extra_context={
             'extended_data': custom_data,
         })
 
