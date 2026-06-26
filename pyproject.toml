@@ -1,6 +1,6 @@
 [project]
 name = "coldfront-extended-user"
-version = "0.0.1"
+version = "0.0.3"
 description = "Extends user object for custom field support"
 readme = "README.md"
 authors = [

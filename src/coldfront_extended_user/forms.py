@@ -15,10 +15,12 @@ from coldfront.users import forms as core_user_forms
 
 User = get_user_model()
 
+# Form for custom user field edit page
 class UserCustomFieldsForm(ColdFrontModelForm):
 
     model = UserCustomFields
     
+    # User field is added for reference but is NOT editable
     user = forms.ModelChoiceField(
         queryset=User.objects.all(),
         disabled=True, 
@@ -28,7 +30,6 @@ class UserCustomFieldsForm(ColdFrontModelForm):
 
     class Meta:
         model = UserCustomFields
-        # 2. Tell the form to use the user field
         fields = [
             "user",
         ] 

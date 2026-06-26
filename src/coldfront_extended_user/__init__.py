@@ -4,7 +4,7 @@ from .version import __version__
 
 class ColdFrontExtendedUserConfig(PluginConfig):
     name = "coldfront_extended_user"
-    verbose_name = "Extended User"
+    verbose_name = "Coldfront Extended User"
     version = __version__
     description = "Adds the custom fields mixin to user profiles"
     author = "Trevor Zimmerman"

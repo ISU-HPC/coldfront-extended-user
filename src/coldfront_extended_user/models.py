@@ -5,9 +5,11 @@ from coldfront.models.base import BaseModel, ColdFrontModel
 from coldfront.models.features import CustomFieldsMixin
 from django.utils.translation import gettext_lazy as _
 
+# Adds custom field support to a user account
+# This model inherits the CustomFieldMixin instead of the core user account
 class UserCustomFields(ColdFrontModel):
-    # Link this directly to the user model dynamically via settings!
-    # This completely avoids all get_user_model() circular import issues.
+    
+    # One-to-one mapping to core user account
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, 
         on_delete=models.CASCADE,
@@ -20,10 +22,9 @@ class UserCustomFields(ColdFrontModel):
         verbose_name_plural = _("Custom user fields")
 
     def get_absolute_url(self):
-        # Trick NetBox into treating the parent User tab as this object's "home" URL
+        # Returns to core user page
         return reverse('users:user', kwargs={'pk': self.user.id})
 
     def __str__(self):
         return self.user.username
 
-    # Your mixin fields are now inherited here, not on the User table

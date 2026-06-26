@@ -2,8 +2,10 @@ from django.urls import reverse
 from .models import UserCustomFields
 from coldfront.plugins import PluginTemplateExtension
 
+# Button for editing custom user fields
+# This button only appears on the individual user view page (.../users/users/{pk})
 class UserCustomFieldsButton(PluginTemplateExtension):
-    # Specify the app_label.model_name this extension applies to
+
     model = 'users.user'
 
     def buttons(self):
@@ -11,23 +13,22 @@ class UserCustomFieldsButton(PluginTemplateExtension):
         obj = self.context['object']
         request = self.context['request']
         current_url = request.path
-
-        # print(current_url)
-        # print(reverse('users:user', kwargs={'pk': obj.pk}))
-
+        
+        # Checks if current page is the individual user view page
         if current_url != reverse('users:user', kwargs={'pk': obj.pk}):
             return ""
 
         action_url = reverse('users:user_custom', kwargs={'pk': obj.pk})
         
-        # Return the HTML string for your button
-        # Netbox uses Bootstrap 5 and Material Design Icons (mdi)
+        # Inject edit button into user view page
         return f"""
         <a href="{action_url}" class="btn btn-primary">
             <i class="mdi mdi-rocket"></i> Edit Custom Fields
         </a>
         """
-    
+
+# Right panel to display custom user fields
+# This panel only appears on the individual user view page
 class UserCustomFieldsPanel(PluginTemplateExtension):
     model = 'users.user'
     
@@ -37,15 +38,14 @@ class UserCustomFieldsPanel(PluginTemplateExtension):
         request = self.context['request']
         current_url = request.path
 
-        custom_data, _ = UserCustomFields.objects.get_or_create(user=obj)
-
-        # print(current_url)
-        # print(reverse('users:user', kwargs={'pk': obj.pk}))
-
+        # Checks if current page is the individual user view page
         if current_url != reverse('users:user', kwargs={'pk': obj.pk}):
             return ""
         
-
+        # Retrieves custom user data
+        custom_data, _ = UserCustomFields.objects.get_or_create(user=obj)
+        
+        # Inject panel into user view page
         return self.render('coldfront_extended_user/custom_fields_card.html', extra_context={
             'extended_data': custom_data,
         })

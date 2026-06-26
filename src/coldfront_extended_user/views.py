@@ -15,19 +15,20 @@ class UserCustomFieldsView(generic.ObjectEditView):
     form = UserCustomFieldsForm
     template_name = "generic/object_edit.html"
 
+    # OPTIONAL: If you want a edit tab instead of a button, uncomment this code
     # tab = ViewTab(
     #     label=_('Edit Custom Fields'),
     #     weight=100,
     # )
 
+    # Edit page for custom user fields
     def get_object(self, *args, **kwargs):
         user_pk = kwargs.get('pk')
-        print(user_pk)
         cfields, created = UserCustomFields.objects.get_or_create(user_id=user_pk)
         return cfields
     
+    # Returns back to individual user view page
     def get_return_url(self, request, obj=None):
         user_pk = self.kwargs.get('pk')
         
-        # For NetBox v3.x (Standard Django User model)
         return reverse('users:user', kwargs={'pk': user_pk})
