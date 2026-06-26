@@ -35,3 +35,6 @@ Elements to view and edit the custom fields have been injected directly into the
 A new button labeled `Edit User Fields` in the top right has also been added. This will direct you to a new page where you can edit and save custom user fields.
 
 If you would like to add a tab to edit custom user fields, some code has been left in `src/view.py`.
+
+## License
+This plugin has been released under the MIT license.
