@@ -13,7 +13,7 @@ class CustomUserFields(ColdFrontModel):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, 
         on_delete=models.CASCADE,
-        related_name="extended_data"
+        related_name="custom_user_fields"
     )
 
     class Meta:

@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('last_updated', models.DateTimeField(auto_now=True, null=True, verbose_name='last updated')),
                 ('custom_field_data', models.JSONField(blank=True, default=dict, encoder=coldfront.core.utils.CustomFieldJSONEncoder)),
                 ('tags', taggit.managers.TaggableManager(help_text='A comma-separated list of tags.', through='core.TaggedItem', to='core.Tag', verbose_name='Tags')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='extended_data', to=settings.AUTH_USER_MODEL)),
+                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='custom_user_fields', to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'verbose_name': 'Custom user field',

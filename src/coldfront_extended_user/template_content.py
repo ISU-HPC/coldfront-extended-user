@@ -47,7 +47,7 @@ class CustomUserFieldsPanel(PluginTemplateExtension):
         
         # Inject panel into user view page
         return self.render('coldfront_extended_user/custom_fields_card.html', extra_context={
-            'extended_data': custom_data,
+            'custom_user_fields': custom_data,
         })
 
 # Register the extension by adding it to the template_extensions list
