@@ -36,5 +36,15 @@ A new button labeled `Edit User Fields` in the top right has also been added. Th
 
 If you would like to add a tab to edit custom user fields, some code has been left in `src/view.py`.
 
+## Accessing Custom Fields via API
+
+The custom fields for a user can be accessed via the REST API via the following URL:
+
+```
+{hostname}/api/plugins/coldfront_extended_user/custom-user-fields/
+```
+
+Each entry contains a nested user entry (which contains name, username, email, etc.) and the custom fields for that user.
+
 ## License
 This plugin has been released under the MIT license.

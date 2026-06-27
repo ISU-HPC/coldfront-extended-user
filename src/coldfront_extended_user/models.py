@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Adds custom field support to a user account
 # This model inherits the CustomFieldMixin instead of the core user account
-class UserCustomFields(ColdFrontModel):
+class CustomUserFields(ColdFrontModel):
     
     # One-to-one mapping to core user account
     user = models.OneToOneField(

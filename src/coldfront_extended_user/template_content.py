@@ -1,10 +1,10 @@
 from django.urls import reverse
-from .models import UserCustomFields
+from .models import CustomUserFields
 from coldfront.plugins import PluginTemplateExtension
 
 # Button for editing custom user fields
 # This button only appears on the individual user view page (.../users/users/{pk})
-class UserCustomFieldsButton(PluginTemplateExtension):
+class CustomUserFieldsButton(PluginTemplateExtension):
 
     model = 'users.user'
 
@@ -29,7 +29,7 @@ class UserCustomFieldsButton(PluginTemplateExtension):
 
 # Right panel to display custom user fields
 # This panel only appears on the individual user view page
-class UserCustomFieldsPanel(PluginTemplateExtension):
+class CustomUserFieldsPanel(PluginTemplateExtension):
     model = 'users.user'
     
     def right_page(self):
@@ -43,7 +43,7 @@ class UserCustomFieldsPanel(PluginTemplateExtension):
             return ""
         
         # Retrieves custom user data
-        custom_data, _ = UserCustomFields.objects.get_or_create(user=obj)
+        custom_data, _ = CustomUserFields.objects.get_or_create(user=obj)
         
         # Inject panel into user view page
         return self.render('coldfront_extended_user/custom_fields_card.html', extra_context={
@@ -51,4 +51,4 @@ class UserCustomFieldsPanel(PluginTemplateExtension):
         })
 
 # Register the extension by adding it to the template_extensions list
-template_extensions = [UserCustomFieldsButton, UserCustomFieldsPanel]
+template_extensions = [CustomUserFieldsButton, CustomUserFieldsPanel]
