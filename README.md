@@ -38,7 +38,7 @@ If you would like to add a tab to edit custom user fields, some code has been le
 
 ## Accessing Custom Fields via API
 
-The custom fields for a user can be accessed via the REST API via the following endpoint:
+The custom fields for all users can be accessed via the REST API via the following endpoint:
 
 ```
 /api/plugins/coldfront_extended_user/custom-user-fields/
