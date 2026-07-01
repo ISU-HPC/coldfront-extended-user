@@ -24,15 +24,15 @@ $ uv run coldfront migrate
 
 ## Creating Custom User Fields
 
-Custom user fields can be created just like other custom fields (e.g., the custom fields for allocations). When creating a custom field, select `Coldfront Extended USer > Custom User Field` for the Object Type.
+Custom user fields can be created just like other custom fields (e.g., the custom fields for allocations). When creating a custom field, select `Coldfront Extended User > Custom User Field` for the Object Type.
 
 ## Viewing and Editing Custom User Fields
 
-Elements to view and edit the custom fields have been injected directly into the core user views. When viewing individual user details, a `Custom Fields` card should appear in the bottom right.
+Elements for viewing and editing custom fields have been injected directly into the core user views. When viewing individual user details, a `Custom Fields` card should appear in the bottom right.
 
 **NOTE**: This card will NOT appear if you have not created any custom user fields.
 
-A new button labeled `Edit User Fields` in the top right has also been added. This will direct you to a new page where you can edit and save custom user fields.
+A new button labeled `Edit User Fields` has also been added in the top right. This will direct you to a new page where you can edit and save custom user fields.
 
 If you would like to add a tab to edit custom user fields, some code has been left in `src/view.py`.
 
@@ -46,7 +46,7 @@ The custom fields for all users can be accessed via the REST API via the followi
 
 Each entry contains a nested user entry (which contains name, username, email, etc.) and the custom fields for that user.
 
-To get the custom fields for a given user, use the following endpoint:
+To get the custom fields for a single user, use the following endpoint:
 
 ```
 /api/plugins/coldfront_extended_user/custom-user-fields/user/{uid}/
