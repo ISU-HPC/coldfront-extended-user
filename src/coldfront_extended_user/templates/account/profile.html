@@ -1,0 +1,16 @@
+{# 1. Tell Django to extend the core NetBox profile template #}
+{% extends "account/profile.html" %}
+
+{# 2. Hook into the main page content block #}
+{% block content %}
+
+    {# 3. Inject your custom content BEFORE the native elements (optional) #}
+
+    {# 4. Render the entire original profile page layout exactly as NetBox intended #}
+    {{ block.super }}
+
+    <c-card.custom_fields :object="custom_user_fields" only />
+
+    {# 5. Or inject your custom content AFTER the native elements #}
+
+{% endblock %}

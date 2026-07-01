@@ -2,6 +2,10 @@ from django.urls import reverse
 from .models import CustomUserFields
 from coldfront.plugins import PluginTemplateExtension
 
+import django_tables2 as tables
+from django.db.models import prefetch_related_objects
+from .tables import CustomUserFieldsTable
+
 # Button for editing custom user fields
 # This button only appears on the individual user view page (.../users/users/{pk})
 class CustomUserFieldsButton(PluginTemplateExtension):
@@ -39,7 +43,9 @@ class CustomUserFieldsPanel(PluginTemplateExtension):
         current_url = request.path
 
         # Checks if current page is the individual user view page
-        if current_url != reverse('users:user', kwargs={'pk': obj.pk}):
+        is_user_page = current_url == reverse('users:user', kwargs={'pk': obj.pk})
+
+        if not is_user_page:
             return ""
         
         # Retrieves custom user data
@@ -50,5 +56,8 @@ class CustomUserFieldsPanel(PluginTemplateExtension):
             'custom_user_fields': custom_data,
         })
 
+
+
 # Register the extension by adding it to the template_extensions list
 template_extensions = [CustomUserFieldsButton, CustomUserFieldsPanel]
+

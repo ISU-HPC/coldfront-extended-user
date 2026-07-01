@@ -1,4 +1,5 @@
 from coldfront.plugins import PluginConfig
+from django.core.checks import register
 
 from .version import __version__
 
@@ -15,3 +16,24 @@ class ColdFrontExtendedUserConfig(PluginConfig):
 
 config = ColdFrontExtendedUserConfig
 
+_columns_registered = False
+
+
+# Adds custom field columns to user table after initialization
+@register()
+def inject_user_table_columns(app_configs, **kwargs):
+    global _columns_registered
+    
+    # Use flag to ensure this adds columns once
+    if not _columns_registered:
+        from .tables import CustomUserFieldsTable
+        from coldfront.users.tables import UserTable
+        from coldfront.tables.utils import register_table_column 
+
+        for c in list(CustomUserFieldsTable([]).columns):
+            if c.name not in ['user', 'pk', 'id', 'actions']: 
+                register_table_column(c.column, c.name, UserTable)
+                
+        _columns_registered = True
+        
+    return []
