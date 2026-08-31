@@ -13,7 +13,6 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('core', '0006_customfield_required_action'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 

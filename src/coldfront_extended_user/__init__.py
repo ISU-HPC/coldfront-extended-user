@@ -14,26 +14,39 @@ class ColdFrontExtendedUserConfig(PluginConfig):
     min_version = "2.0.0"
     default_settings = {}
 
+    def ready(self):
+        super().ready()
+
+
+        from .init_overrides import run_user_table_init, run_user_filter_init
+        run_user_table_init()
+        # run_user_filter_init()
+
+
 config = ColdFrontExtendedUserConfig
 
 _columns_registered = False
 
 
-# Adds custom field columns to user table after initialization
-@register()
-def inject_user_table_columns(app_configs, **kwargs):
-    global _columns_registered
-    
-    # Use flag to ensure this adds columns once
-    if not _columns_registered:
-        from .tables import CustomUserFieldsTable
-        from coldfront.users.tables import UserTable
-        from coldfront.tables.utils import register_table_column 
+# # Adds custom field columns to user table after initialization
+# @register()
+# def inject_user_table_columns(app_configs, **kwargs):
+#     global _columns_registered
 
-        for c in list(CustomUserFieldsTable([]).columns):
-            if c.name not in ['user', 'pk', 'id', 'actions']: 
-                register_table_column(c.column, c.name, UserTable)
+#     print("IM RUNNING")
+    
+#     # Use flag to ensure this adds columns once
+#     if not _columns_registered:
+#         from .tables import CustomUserFieldsTable
+#         from coldfront.users.tables import UserTable
+#         from coldfront.tables.utils import register_table_column 
+
+#         for c in list(CustomUserFieldsTable([]).columns):
+#             if "cf_" not in c.name: 
+#                 c.column.accessor = d_tables.A(f"custom_user_fields.custom_field_data.{c.name.strip('cf_')}")
+#                 register_table_column(c.column, c.name, UserTable)
+#                 # print(c.name)
                 
-        _columns_registered = True
+#         _columns_registered = True
         
-    return []
+#     return []

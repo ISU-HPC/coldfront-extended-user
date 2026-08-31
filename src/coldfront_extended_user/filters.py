@@ -1,8 +1,9 @@
 from django.db.models import Q
 from .models import CustomUserFields
 from coldfront.views.filtersets import ColdFrontModelFilterSet
+from coldfront.forms import ColdFrontModelFilterSetForm
 
-class ProjectFilterSet(ColdFrontModelFilterSet):
+class CustomUserFieldsFilterSet(ColdFrontModelFilterSet):
     class Meta:
         model = CustomUserFields
         fields = (
@@ -15,3 +16,6 @@ class ProjectFilterSet(ColdFrontModelFilterSet):
         return queryset.filter(
             Q(user__username__icontains=value)
         )
+
+class CustomUserFieldsFilterSetForm(ColdFrontModelFilterSetForm):
+    model = CustomUserFields
