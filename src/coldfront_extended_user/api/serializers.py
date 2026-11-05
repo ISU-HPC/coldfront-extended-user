@@ -1,4 +1,4 @@
-from coldfront.api.serializers import (
+from coldfront.lib.api.serializers import (
     PrimaryModelSerializer,
 )
 

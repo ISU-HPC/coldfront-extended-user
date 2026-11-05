@@ -2,9 +2,9 @@
 
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from crispy_forms.layout import Fieldset, Layout
+from coldfront.lib.forms.layout import FieldSet
 
-from coldfront.forms.model_forms import ColdFrontModelForm
+from coldfront.lib.forms.model_forms import ColdFrontModelForm
 from coldfront.users.forms.model_forms import UserForm
 
 from .models import CustomUserFields
@@ -34,7 +34,7 @@ class CustomUserFieldsForm(ColdFrontModelForm):
         ] 
 
     fieldsets = (
-        Fieldset(
+        FieldSet(
             _("User"),
             "user",
         ),

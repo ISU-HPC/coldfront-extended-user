@@ -1,4 +1,4 @@
-from coldfront.plugins import PluginConfig
+from coldfront.lib.plugins import PluginConfig
 from django.core.checks import register
 
 from .version import __version__

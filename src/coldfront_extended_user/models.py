@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
-from coldfront.models.base import BaseModel, ColdFrontModel
+from coldfront.lib.models.base import BaseModel, ColdFrontModel
 from django.utils.translation import gettext_lazy as _
 
 # Adds custom field support to a user account

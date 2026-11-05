@@ -51,7 +51,7 @@ def run_user_filter_init():
     original_form_init = UserFilterSetForm.__init__
 
     try:
-        from coldfront.utils.forms import FieldSet
+        from coldfront.lib.forms.layout import FieldSet
         HAS_FIELDSET = True
     except ImportError:
         HAS_FIELDSET = False

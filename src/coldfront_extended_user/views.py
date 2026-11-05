@@ -1,12 +1,12 @@
 # views.py
 from django.urls import reverse
 from django.views.generic import UpdateView
-from coldfront.views import ViewTab, generic
+from coldfront.lib.views import ViewTab, generic
 from .models import CustomUserFields
 from .forms import CustomUserFieldsForm
 from coldfront.users.models import User
 
-from coldfront.registry import register_model_view
+from coldfront.lib.registry import register_model_view
 from django.utils.translation import gettext_lazy as _
 
 @register_model_view(User, "custom")

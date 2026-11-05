@@ -1,6 +1,6 @@
 from django.urls import reverse
 from .models import CustomUserFields
-from coldfront.plugins import PluginTemplateExtension
+from coldfront.lib.plugins import PluginTemplateExtension
 
 import django_tables2 as tables
 from django.db.models import prefetch_related_objects

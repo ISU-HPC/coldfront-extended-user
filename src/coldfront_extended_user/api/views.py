@@ -3,7 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
-from coldfront.api.viewsets import ColdFrontModelViewSet
+from coldfront.lib.api.viewsets import ColdFrontModelViewSet
 from coldfront.ras import filtersets
 from coldfront_extended_user.models import CustomUserFields
 

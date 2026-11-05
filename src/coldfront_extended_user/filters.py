@@ -1,7 +1,7 @@
 from django.db.models import Q
 from .models import CustomUserFields
-from coldfront.views.filtersets import ColdFrontModelFilterSet
-from coldfront.forms import ColdFrontModelFilterSetForm
+from coldfront.lib.views.filtersets import ColdFrontModelFilterSet
+from coldfront.lib.forms import ColdFrontModelFilterSetForm
 
 class CustomUserFieldsFilterSet(ColdFrontModelFilterSet):
     class Meta:
